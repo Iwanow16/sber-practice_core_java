@@ -2,27 +2,21 @@
 
 public class Task5 
 {
-    public static void main(String[] args) 
+    public static void main( String[] args ) 
     {
-        
-        int n = 10;
-        double[] array = new double[n];
-
-        for (int i = 0; i < array.length; i++) 
-        {
-            array[i] = (Math.random() * 98 + 2);
+        int i, j;
+        boolean flag;
+ 
+        for ( i = 2; i < 100; i++ ) {
+            flag = true;
+ 
+            for ( j = 2; j <= i / j; j++ ) 
+            {
+                if (( i % j ) == 0)
+                flag = false;
+            }
+            if (flag)
+                System.out.print( i + " ");
         }
-
-        double max = array[0];
-        double average = 0;
-
-        for (int i = 0; i < array.length; i++) 
-        {
-            if(max < array[i]) max = array[i];
-            average += array[i]/array.length;
-        }
-
-        System.out.println("max = " + max);
-        System.out.println("avg = " + average);
     }
 }
