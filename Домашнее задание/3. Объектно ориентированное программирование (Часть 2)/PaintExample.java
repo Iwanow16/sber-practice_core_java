@@ -3,7 +3,7 @@ public class PaintExample {
 
         Point point1 = new Point(5, 5);
         Circle circle = new Circle(point1, 8.0);
-        circle.draw(Color.красный);
+        circle.draw(Color.RED);
 
         Point point2 = new Point(201, 305);
         Square square = new Square(point2, 200);
@@ -16,7 +16,7 @@ public class PaintExample {
         Rectangle rectangle = new Rectangle(point3, 9.0, 10.0);
         System.out.println("Площадь: " + rectangle.area());
         System.out.println("Периметр: " + rectangle.perimeter());
-        rectangle.draw(Color.синий);
+        rectangle.draw(Color.BLUE);
 
         Point point4 = new Point(601, 205);
         Triangle triangle = new Triangle(point4, 6, 6,6);

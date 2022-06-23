@@ -12,11 +12,11 @@ public abstract class Figure implements Drawable{
     public abstract double perimeter();
 
     public void draw(){
-        System.out.println(String.format("Нарисован %s с координатами ( %s , %s )", nameFigure, point.getX(), point.getY()));
+        System.out.printf("Нарисован %s с координатами ( %s , %s )", nameFigure, point.getX(), point.getY());
     }
 
     public void draw(Color color){
-        System.out.println(String.format("Нарисован %s с координатами ( %s , %s ). Цвет: %s", nameFigure, point.getX(), point.getY(), color));
+        System.out.printf("Нарисован %s с координатами ( %s , %s ). Цвет: %s", nameFigure, point.getX(), point.getY(), color);
     }
 
     public void setPoint(Point point) {

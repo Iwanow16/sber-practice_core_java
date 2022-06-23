@@ -1,9 +1,9 @@
 public enum Color {
-    красный,
-    оранжевый, 
-    желтый,
-    зеленый,
-    голубой,
-    синий,
-    Pфиолетовый
+    RED,
+    ORANGE, 
+    YELLOW,
+    GREEN,
+    CYAN,
+    BLUE,
+    PURPLE
     }
