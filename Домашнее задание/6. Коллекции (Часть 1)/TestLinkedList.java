@@ -1,4 +1,5 @@
 import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 public class TestLinkedList {
     public static void main(String[] args) {
@@ -49,6 +50,13 @@ public class TestLinkedList {
 
             sublist.clear();
             System.out.println(sublist.isEmpty());
+
+            Iterator<Object> it = linkedList.iterator();
+
+            while(it.hasNext())
+            {
+                System.out.print(it.next() + " ");
+            }
 
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
