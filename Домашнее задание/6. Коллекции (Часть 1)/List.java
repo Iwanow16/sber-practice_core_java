@@ -1,16 +1,16 @@
-public interface List extends Collection{
+public interface List<E> extends Collection<E>{
     
-    void add(int index, Object item);
+    void add(int index, E item);
 
-    void set(int index, Object item);
+    void set(int index, E item);
 
-    Object get(int index);
+    E get(int index);
 
-    int indexOf(Object item);
+    int indexOf(E item);
 
-    int lastIndexOf(Object item);
+    int lastIndexOf(E item);
 
-    Object remove(int index);
+    E remove(int index);
 
-    List subList(int from, int to);
+    List<E> subList(int from, int to);
 }

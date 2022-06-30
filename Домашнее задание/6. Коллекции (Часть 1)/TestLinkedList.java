@@ -3,9 +3,8 @@ import java.util.Iterator;
 
 public class TestLinkedList {
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-
         try{
+            LinkedList<Integer> linkedList = new LinkedList<>();
             linkedList.add(0, 1);
             linkedList.add(2);
             linkedList.add(linkedList.size(), 3);
@@ -16,7 +15,7 @@ public class TestLinkedList {
             }
             System.out.println();
 
-            LinkedList sublist = linkedList.subList(1, 3);
+            LinkedList<Integer> sublist = linkedList.subList(1, 3);
 
             for (Object object : sublist) {
                 System.out.print(object + " ");
@@ -28,7 +27,7 @@ public class TestLinkedList {
             System.out.println(sublist.indexOf(3));
             System.out.println(sublist.pollFirst());
             System.out.println(sublist.pollLast());
-            
+
             sublist.add(5);
             sublist.add(6);
             sublist.add(7);
@@ -51,13 +50,12 @@ public class TestLinkedList {
             sublist.clear();
             System.out.println(sublist.isEmpty());
 
-            Iterator<Object> it = linkedList.iterator();
+            Iterator<Integer> it = linkedList.iterator();
 
             while(it.hasNext())
             {
                 System.out.print(it.next() + " ");
             }
-
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
         } catch (NoSuchElementException ex) {

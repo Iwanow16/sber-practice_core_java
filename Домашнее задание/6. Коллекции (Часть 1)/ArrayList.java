@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class ArrayList implements List {
+public class ArrayList<E> implements List<E> {
 
     private Object[] arrayList;
     private int capacity;
@@ -14,7 +14,7 @@ public class ArrayList implements List {
     }
 
     // Cоздает списочный массив, инициализируемый элементами из переданной коллекции
-    public ArrayList(ArrayList arrayList) {
+    public ArrayList(ArrayList<E> arrayList) {
         this.arrayList = arrayList.getArrayList();
         this.capacity = arrayList.getCapacity();
         this.size = arrayList.getSize();
@@ -28,7 +28,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void add(int index, Object item) throws IndexOutOfBoundsException {
+    public void add(int index, E item) throws IndexOutOfBoundsException {
         if (size == capacity) {arrayList = addCapacity();}
         if(index < 0 || index > size) {throw new IndexOutOfBoundsException();}
         else {
@@ -39,46 +39,47 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void set(int index, Object item) throws IndexOutOfBoundsException {
+    public void set(int index, E item) throws IndexOutOfBoundsException {
         if (index < 0 || index > size) {throw new IndexOutOfBoundsException();}
         else if (index == size) {add(item);}
         else {arrayList[index] = item;}
     }
 
     @Override
-    public Object get(int index) throws IndexOutOfBoundsException {
+    public E get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {throw new IndexOutOfBoundsException();}
-        return arrayList[index];
+        return (E) arrayList[index];
     }
 
     @Override
-    public int indexOf(Object item) {
+    public int indexOf(E item) {
         for (int i = 0; i < size; i++)
             if (arrayList[i].equals(item)) {return i;}
         return -1;
     }
 
     @Override
-    public int lastIndexOf(Object item) {
+    public int lastIndexOf(E item) {
         for (int i = size - 1; i >= 0; i--)
             if (arrayList[i].equals(item)) {return i;}
         return -1;
     }
 
     @Override
-    public Object remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size) {throw new IndexOutOfBoundsException();}
-        Object removeElement = arrayList[index];
-        for (int i = index; i < size; i++) arrayList[i] = arrayList[i + 1];
+        E removeElement = (E) arrayList[index];
+        for (int i = index; i < size; i++) 
+            arrayList[i] = arrayList[i + 1];
         size--;
         return removeElement;
     }
 
     @Override
-    public ArrayList subList(int from, int to) throws IndexOutOfBoundsException {
+    public ArrayList<E> subList(int from, int to) throws IndexOutOfBoundsException {
         if (from < 0 || to < 0 || to > size || from > to) {throw new IndexOutOfBoundsException();}
-        ArrayList subArrayList = new ArrayList();
-        for (int i = from; i < to; i++) subArrayList.add(arrayList[i]);
+        ArrayList<E> subArrayList = new ArrayList<>();
+        for (int i = from; i < to; i++) subArrayList.add((E) arrayList[i]);
         return subArrayList;
     }
 
@@ -94,14 +95,14 @@ public class ArrayList implements List {
     }
 
     @Override
-    public boolean contains(Object item){
+    public boolean contains(E item){
         for (Object object : arrayList)
             if (item.equals(object)) {return true;}
         return false;
     }
 
     @Override
-    public boolean add(Object item){
+    public boolean add(E item){
         if (size < capacity) {arrayList[size] = item;}
         else {
             Object[] newArrayList = addCapacity();
@@ -112,8 +113,16 @@ public class ArrayList implements List {
         return true;
     }
 
+    private Object[] addCapacity() {
+        capacity = (capacity * 3) / 2 + 1;
+        Object[] newArrayList = new Object[capacity];
+        for (int i = 0; i < size; i++) 
+            newArrayList[i] = arrayList[i];
+        return newArrayList;
+    }
+
     @Override
-    public boolean remove(Object item)
+    public boolean remove(E item)
     {
         int arrSize = size;
         while(contains(item)) remove(indexOf(item));
@@ -128,16 +137,8 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Iterator<Object> iterator() {
-        return new ListIterator(this);
-    }
-    
-    private Object[] addCapacity() {
-        capacity = (capacity * 3) / 2 + 1;
-        Object[] newArrayList = new Object[capacity];
-        for (int i = 0; i < size; i++) 
-            newArrayList[i] = arrayList[i];
-        return newArrayList;
+    public Iterator<E> iterator() {
+        return new ListIterator<>(this);
     }
 
     public Object[] getArrayList() {

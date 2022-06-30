@@ -1,11 +1,11 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ListIterator implements Iterator<Object> {
-    private List array;
+public class ListIterator<E> implements Iterator<E> {
+    private List<E> array;
     private int index;
 
-    public ListIterator(List arr) {
+    public ListIterator(List<E> arr) {
         this.array = arr;
         this.index = 0;
     }
@@ -16,7 +16,7 @@ public class ListIterator implements Iterator<Object> {
     }
 
     @Override
-    public Object next() throws NoSuchElementException {
+    public E next() throws NoSuchElementException {
         if (!hasNext()) {throw new NoSuchElementException();}
         index++;
         return(array.get(index - 1));        

@@ -2,29 +2,29 @@ import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public interface Collection extends java.lang.Iterable<Object>{
+public interface Collection<E> extends java.lang.Iterable<E>{
 
     int size();
     
     boolean isEmpty();
     
-    boolean contains(Object item);
+    boolean contains(E item);
     
-    boolean add(Object item);
+    boolean add(E item);
     
-    boolean remove(Object item);
+    boolean remove(E item);
     
     void clear();
 
-    Iterator<Object> iterator();
+    Iterator<E> iterator();
 
     @Override
-    default void forEach(Consumer<? super Object> action) {
+    default void forEach(Consumer<? super E> action) {
         Iterable.super.forEach(action);
     }
 
     @Override
-    default Spliterator<Object> spliterator() {
+    default Spliterator<E> spliterator() {
         return Iterable.super.spliterator();
     }
 }
