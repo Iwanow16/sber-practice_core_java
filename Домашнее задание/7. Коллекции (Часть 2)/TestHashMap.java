@@ -5,8 +5,8 @@ public class TestHashMap {
         
         /* Добавление элементов */
         hashMap.put(1, "1");
-        hashMap.put(3, "2");
-        hashMap.put(9, "3");
+        hashMap.put(2, "2");
+        hashMap.put(3, "3");
 
         /* Вывод значений */
         for (String el : hashMap.values())
